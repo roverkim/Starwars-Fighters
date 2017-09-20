@@ -1,0 +1,156 @@
+*
+  padding: 0
+  margin: 0
+  font-size: 2vh
+  line-height: 1
+
+//Mixins
+////Grid
+@mixin grid ($columns, $rows, $area)
+  grid-template-columns: $columns
+  grid-template-rows: $rows
+  grid-template-areas: $area
+
+////Center Horizontally and Vertically Using grid
+@mixin grid_Vertical_Horizontal_Center
+  justify-self: center
+  align-self: center
+
+////Center Horizontally and Vertically Using Css transform
+@mixin normal_Vertical_Horizontal_Center
+  // Remember to declare parent as postion: relative
+  position: absolute
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+
+@mixin view_Height_Width
+  height: 100vh
+  width: 100vw
+
+//Variables
+
+$border: 1px solid white
+
+
+// Start of HTML
+
+
+// Class Reuse
+
+//Container Class for all Containers
+.container
+  grid-area: container
+  margin: 0 10px
+  display: grid
+  height: 100%
+  width: 20%
+  float: left
+  @include grid($columns: 0.1px 5fr 0.1px  , $rows: 0.5fr 4fr 0.5fr , $area:". name . " ". img . " ". name_health .")
+  background-color: white
+  //To Delete
+  border: $border
+  // Name of Character
+  .name
+    grid-area: name
+    // text-align: center
+    // @include grid_Vertical_Horizontal_Center
+  // Image of Character
+  .img
+    grid-area: img
+    height: 80%
+    width: 100%
+    @include grid_Vertical_Horizontal_Center
+  // Health of Character
+  .name_health
+    grid-area: name_health
+    @include grid_Vertical_Horizontal_Center
+
+// Used for Centering Container
+.center
+  @include grid_Vertical_Horizontal_Center
+  height: 80%
+  width: 80%
+  border: $border
+
+//body declared as a grid. Has 2 main columns,2 outer side columns for spacing and one row
+body
+  display: grid
+  background: url(../Img/star_Background.gif)
+  background-repeat: no-repeat
+  padding: 0.5%
+  background-size: cover
+  @include view_Height_Width
+  @include grid ($columns: 0.1px 1fr 1fr 0.1px, $rows: 1fr, $area: ". left_Section right_Section.")
+  grid-column-gap: 0.5%
+  @include view_Height_Width
+
+
+  //Left Section
+  .left_Section
+    grid-area: left_Section
+    display: grid
+    border: $border
+
+    //Left Section is a grid with 5 rows and 1 columns
+    @include grid($columns: "1fr" , $rows:"3fr 3fr 1fr 3fr 1fr" , $area: "player_Staging_Area" "enemy_Staging_Area" "fight" "defender_Area" "comment_Area")
+    //PLayer Staging Area
+    .player_Staging_Area
+      grid-area: player_Staging_Area
+      border: $border
+      display: grid
+
+    //Enermy Staging Area
+    .enemy_Staging_Area
+      grid-area: enemy_Staging_Area
+      border: $border
+    //Fight area that has title text and a fight button
+    .fight
+      grid-area: fight
+      display: grid
+      @include grid($columns: "1fr" , $rows: "1fr 1fr" , $area: "fight_Title" "button_Fight")
+      border: $border
+      // Fight Titile
+      .fight_Title
+        grid-area: fight_Title
+        @include grid_Vertical_Horizontal_Center
+      //Fight button
+      .button_Fight
+        grid-area: button_Fight
+        @include grid_Vertical_Horizontal_Center
+        width: 20%
+        height: auto
+
+    //Defender Area
+    .defender_Area
+      grid-area: defender_Area
+      border: $border
+
+    // Comment Area with chaning text and reset button
+    .comment_Area
+      display: grid
+      grid-area: comment_Area
+      @include grid($columns: "1fr" , $rows: "1fr 1fr 1fr" , $area: "player_Text" "enemy_Text" "button_Reset")
+      border: $border
+      // Player comments
+      .player_Text
+        grid-area: player_Text
+        @include grid_Vertical_Horizontal_Center
+      // Changing comments
+      .enemy_Text
+        grid-area: enemy_Text
+        @include grid_Vertical_Horizontal_Center
+      //Reset button
+      .button_Reset
+        grid-area: button_Reset
+        @include grid_Vertical_Horizontal_Center
+        width: 20%
+        height: auto
+        display: none
+        visibility: hidden
+
+
+  //Right Section
+  .right_Section
+    grid-area: right_Section
+    border: $border
