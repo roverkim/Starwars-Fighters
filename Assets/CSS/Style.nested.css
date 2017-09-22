@@ -173,7 +173,8 @@ body {
         width: 20%;
         height: auto;
         display: none;
-        visibility: hidden; }
+        visibility: hidden;
+        color: black; }
   body .right_Section {
     grid-area: right_Section;
     border: 1px solid white; }
