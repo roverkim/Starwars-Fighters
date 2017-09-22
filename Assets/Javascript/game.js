@@ -287,7 +287,7 @@ function reset_Char_Counter_Position(){
       // Call hp function to display resetted hp
       hp_Display();
       //Jquery to redisplay characters in staging area.
-      $(".first_Character, .second_Character, .third_Character, .forth_Character").appendTo(".center").css({"background-color": "white", "color": "black"});
+      $(".first_Character, .second_Character, .third_Character, .forth_Character").appendTo(".player_Staging_Area").css({"background-color": "white", "color": "black"});
       $(".player_Text").text("Select a Character to begin");
       $(".enemy_Text").text("May the force be with you!");
     }
@@ -343,7 +343,7 @@ $(".button_Fight").on("click", function(){
   console.log("Attack button has been clicked!");
   console.log("Player has picked: "+ player.name + " and " + "Enemy has picked: "+ enemy.name);
   //Extract data counter variable from html that keeps track of wins
-  win_Tracker = $(".player_Staging_Area").data("counter");
+  win_Tracker = $(".player_Area").data("counter");
   console.log("If tracker is 1, the game is won. Current tracker is: "+ win_Tracker);
 
 //////////////////// Attack Logic //////////////////////////////////////////////////////
@@ -404,7 +404,7 @@ if (enemy.visited == 1)
                   $(".player_Text").text("You have defeated " + enemy.name);
                   $(".enemy_Text").text("Choose another character to fight.");
                   // Removes the character from the DOM
-                  $("[data-header=\"" + characters[check].name + "\"]").detach();
+                  $("[data-header=\"" + characters[check].name + "\"]").remove();
                   // Resets variables
                   // rey_Click = 0;
                   // finn_Click = 0;
@@ -414,7 +414,7 @@ if (enemy.visited == 1)
                   //Reassigns enemy visited to character to prevent visited 1 or 2 condition from activating
                   enemy.visited = 2;
                   characters[check].visited = enemy.visited;
-                  $(".player_Staging_Area").data("counter", win_Tracker);
+                  $(".player_Area").data("counter", win_Tracker);
                 }
               //Reasigns enemy object with current enemy object
               enemy = Object.assign({}, characters[check]);
@@ -493,7 +493,7 @@ else if (enemy.visited == 0)
               $(".player_Text").text("You have defeated " + enemy.name);
               $(".enemy_Text").text("Choose another character to fight.");
               // Removes the character from the DOM
-              $("[data-header=\"" + characters[check].name + "\"]").detach();
+              $("[data-header=\"" + characters[check].name + "\"]").remove();
               // Resets variables
               rey_Click = 0;
               finn_Click = 0;
@@ -503,7 +503,7 @@ else if (enemy.visited == 0)
               //Reassigns enemy visited to character to prevent visited 1 or 2 condition from activating
               enemy.visited = 2;
               characters[check].visited = enemy.visited;
-              $(".player_Staging_Area").data("counter", win_Tracker);
+              $(".player_Area").data("counter", win_Tracker);
             }
           //Reasigns enemy object with current enemy object
           enemy = Object.assign({}, characters[check]);

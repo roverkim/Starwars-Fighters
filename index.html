@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+ss<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Star Wars Fighters</title>
     <!-- Styles -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="Assets/CSS/reset.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
     <link rel="stylesheet" href="Assets/CSS/style.min.css">
     <!-- Scipts -->
@@ -20,46 +20,51 @@
 
      <!-- Left Section of the body-->
      <section class = "left_Section">
-       <div class="player_Staging_Area" data-counter = "4">
+       <div class="player_Area" data-counter = "4">
 
-        <!-- Div container for centering -->
-        <div class="center">
+          <!-- Div container for centering -->
+          <div class="center">
+            <p class = "player_Title"> Players available to choose.</p>
+            <div class="player_Staging_Area">
+              <!-- 1st Character Container -->
+              <div class="container first_Character" data-header = "Rey">
+                <p class = "name">Rey</p>
+                <img class = "img name_1_Img img-responsive" src="Assets/Img/rey.jpg" alt="Rey">
+                <p class = "name_health name_health_1"  data-name = "Rey"></p>
+              </div>
 
-          <!-- 1st Character Container -->
-          <div class="container first_Character" data-header = "Rey">
-            <p class = "name1">Rey</p>
-            <img class = "img name_1_Img img-responsive" src="Assets/Img/rey.jpg" alt="Rey">
-            <p class = "name_health name_health_1"  data-name = "Rey"></p>
+              <!-- 2nd Character Container -->
+              <div class="container second_Character" data-header = "Finn">
+                <p class = "name">FN-2187</p>
+                <img class = "img name_2_img img-responsive" src="Assets/Img/finn.jpeg" alt="Finn">
+                <p class = "name_health  name_health_2" data-name = "Finn"></p>
+              </div>
+
+              <!-- 3rd Character Container -->
+              <div class="container third_Character" data-header = "Kylo" >
+                <p class = "name"> Kylo Ren </p>
+                <img class = "img name_3_img img-responsive" src="Assets/Img/kylo.jpg" alt="Kylo Renn">
+                <p class = "name_health  name_health_3"  data-name = "Kylo"></p>
+              </div>
+
+              <!-- 4th Character Container -->
+              <div class="container forth_Character" data-header = "Captain">
+                <p class = "name">Captain Phasma</p>
+                <img class = "img name_4_img img-responsive" src="Assets/Img/phasma.jpg" alt="Captain Phasma">
+                <p class = "name_health  name_health_4"  data-name = "Captain"></p>
+              </div>
+            </div>
+
           </div>
-
-          <!-- 2nd Character Container -->
-          <div class="container second_Character" data-header = "Finn">
-            <p class = "name2">FN-2187</p>
-            <img class = "img name_2_img img-responsive" src="Assets/Img/finn.jpeg" alt="Finn">
-            <p class = "name_health  name_health_2" data-name = "Finn"></p>
-          </div>
-
-          <!-- 3rd Character Container -->
-          <div class="container third_Character" data-header = "Kylo" >
-            <p class = "name"> Kylo Ren </p>
-            <img class = "img name_3_img img-responsive" src="Assets/Img/kylo.jpg" alt="Kylo Renn">
-            <p class = "name_health  name_health_3"  data-name = "Kylo"></p>
-          </div>
-
-          <!-- 4th Character Container -->
-          <div class="container forth_Character" data-header = "Captain">
-            <p class = "name">Captain Phasma</p>
-            <img class = "img name_4_img img-responsive" src="Assets/Img/phasma.jpg" alt="Captain Phasma">
-            <p class = "name_health  name_health_4"  data-name = "Captain"></p>
-          </div>
-
-        </div>
        <!-- End of player staging area-->
         </div>
 
         <!-- Enemies are placed here before selection of which enemy to attack -->
-         <div class="enemy_Staging_Area">
-
+         <div class="enemy_Area">
+           <div class="center1">
+             <p class = "enemy_Title"> Enemies available to attack </p>
+             <div class="enemy_Staging_Area"> </div>
+           </div>
          </div>
 
         <!-- Fight Title with button -->
@@ -69,8 +74,11 @@
         </div>
 
         <!-- Defender is placed here -->
-        <div class="defender_Area">
-
+        <div class="defender_Area_Main">
+          <div class="center2">
+            <p class = "defender_Title"> Defender </p>
+            <div class="defender_Area"> </div>
+          </div>
         </div>
 
         <!-- Comments and Restart button -->

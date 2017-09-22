@@ -10,6 +10,8 @@
   display: grid;
   height: 100%;
   width: 20%;
+  max-height: 150px;
+  max-width: 150px;
   float: left;
   grid-template-columns: 0.1px 5fr 0.1px;
   grid-template-rows: 0.5fr 4fr 0.5fr;
@@ -17,7 +19,9 @@
   background-color: white;
   border: 1px solid white; }
   .container .name {
-    grid-area: name; }
+    grid-area: name;
+    text-align: center;
+    width: auto; }
   .container .img {
     grid-area: img;
     height: 80%;
@@ -28,13 +32,6 @@
     grid-area: name_health;
     justify-self: center;
     align-self: center; }
-
-.center {
-  justify-self: center;
-  align-self: center;
-  height: 80%;
-  width: 80%;
-  border: 1px solid white; }
 
 body {
   display: grid;
@@ -49,21 +46,66 @@ body {
   grid-template-areas: ". left_Section right_Section.";
   grid-column-gap: 0.5%;
   height: 100vh;
-  width: 100vw; }
+  width: 100vw;
+  width: 100vw;
+  height: 100vh; }
   body .left_Section {
     grid-area: left_Section;
     display: grid;
-    border: 1px solid white;
     grid-template-columns: "1fr";
-    grid-template-rows: "3fr 3fr 1fr 3fr 1fr";
-    grid-template-areas: "player_Staging_Area" "enemy_Staging_Area" "fight" "defender_Area" "comment_Area"; }
-    body .left_Section .player_Staging_Area {
-      grid-area: player_Staging_Area;
+    grid-template-rows: "2fr 2fr 0.5fr 2fr 0.5fr";
+    grid-template-areas: "player_Area" "enemy_Area" "fight" "defender_Area_Main" "comment_Area"; }
+    body .left_Section .player_Area {
+      grid-area: player_Area;
       border: 1px solid white;
-      display: grid; }
-    body .left_Section .enemy_Staging_Area {
-      grid-area: enemy_Staging_Area;
-      border: 1px solid white; }
+      display: grid;
+      min-height: 200px; }
+      body .left_Section .player_Area .center {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 5fr;
+        grid-template-areas: " player_Title" "player_Staging_Area";
+        justify-self: center;
+        align-self: center;
+        height: 100%;
+        width: 100%;
+        border: 1px solid white; }
+      body .left_Section .player_Area .player_Title {
+        color: white;
+        grid-area: player_Title;
+        justify-self: center;
+        align-self: center; }
+      body .left_Section .player_Area .player_Staging_Area {
+        width: 100%;
+        height: 100%;
+        grid-area: player_Staging_Area;
+        justify-self: center;
+        align-self: center; }
+    body .left_Section .enemy_Area {
+      grid-area: enemy_Area;
+      border: 1px solid white;
+      display: grid;
+      min-height: 200px; }
+      body .left_Section .enemy_Area .center1 {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 5fr;
+        grid-template-areas: " enemy_Title" "enemy_Staging_Area";
+        justify-self: center;
+        align-self: center;
+        height: 100%;
+        width: 100%; }
+      body .left_Section .enemy_Area .enemy_Title {
+        color: white;
+        grid-area: enemy_Title;
+        justify-self: center;
+        align-self: center; }
+      body .left_Section .enemy_Area .enemy_Staging_Area {
+        width: 100%;
+        height: 100%;
+        grid-area: enemy_Staging_Area;
+        justify-self: center;
+        align-self: center; }
     body .left_Section .fight {
       grid-area: fight;
       display: grid;
@@ -72,6 +114,7 @@ body {
       grid-template-areas: "fight_Title" "button_Fight";
       border: 1px solid white; }
       body .left_Section .fight .fight_Title {
+        color: white;
         grid-area: fight_Title;
         justify-self: center;
         align-self: center; }
@@ -81,16 +124,40 @@ body {
         align-self: center;
         width: 20%;
         height: auto; }
-    body .left_Section .defender_Area {
-      grid-area: defender_Area;
-      border: 1px solid white; }
+    body .left_Section .defender_Area_Main {
+      grid-area: defender_Area_Main;
+      color: white;
+      border: 1px solid white;
+      display: grid;
+      min-height: 200px; }
+      body .left_Section .defender_Area_Main .center2 {
+        height: 100%;
+        width: 100%;
+        justify-self: center;
+        align-self: center;
+        display: grid;
+        border: 1px white solid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 5fr;
+        grid-template-areas: " defender_Title" "defender_Area"; }
+        body .left_Section .defender_Area_Main .center2 .defender_Title {
+          grid-area: defender_Title;
+          justify-self: center;
+          align-self: center; }
+        body .left_Section .defender_Area_Main .center2 .defender_Area {
+          grid-area: defender_Area;
+          width: 100%;
+          height: 100%;
+          justify-self: center;
+          align-self: center; }
     body .left_Section .comment_Area {
       display: grid;
       grid-area: comment_Area;
       grid-template-columns: "1fr";
       grid-template-rows: "1fr 1fr 1fr";
       grid-template-areas: "player_Text" "enemy_Text" "button_Reset";
-      border: 1px solid white; }
+      border: 1px solid white;
+      color: white; }
       body .left_Section .comment_Area .player_Text {
         grid-area: player_Text;
         justify-self: center;
@@ -110,3 +177,16 @@ body {
   body .right_Section {
     grid-area: right_Section;
     border: 1px solid white; }
+
+@media only screen and (max-width: 740px) {
+  body {
+    display: grid;
+    grid-template-columns: 0.1px 1fr 0.1px;
+    grid-template-rows: 1fr 0.5fr;
+    grid-template-areas: ". right_Section ." ". left_Section .";
+    grid-column-gap: 0.5%;
+    height: 100vh;
+    width: 100vw;
+    width: 100vw;
+    height: 100vh;
+    background-repeat: repeat; } }

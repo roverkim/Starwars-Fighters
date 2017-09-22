@@ -45,14 +45,21 @@ $border: 1px solid white
   display: grid
   height: 100%
   width: 20%
+  max-height: 150px
+  max-width: 150px
   float: left
   @include grid($columns: 0.1px 5fr 0.1px  , $rows: 0.5fr 4fr 0.5fr , $area:". name . " ". img . " ". name_health .")
   background-color: white
+
+
+
   //To Delete
   border: $border
   // Name of Character
   .name
     grid-area: name
+    text-align: center
+    width: auto
     // text-align: center
     // @include grid_Vertical_Horizontal_Center
   // Image of Character
@@ -66,12 +73,6 @@ $border: 1px solid white
     grid-area: name_health
     @include grid_Vertical_Horizontal_Center
 
-// Used for Centering Container
-.center
-  @include grid_Vertical_Horizontal_Center
-  height: 80%
-  width: 80%
-  border: $border
 
 //body declared as a grid. Has 2 main columns,2 outer side columns for spacing and one row
 body
@@ -84,26 +85,63 @@ body
   @include grid ($columns: 0.1px 1fr 1fr 0.1px, $rows: 1fr, $area: ". left_Section right_Section.")
   grid-column-gap: 0.5%
   @include view_Height_Width
+  width: 100vw
+  height: 100vh
+
 
 
   //Left Section
   .left_Section
     grid-area: left_Section
     display: grid
-    border: $border
 
     //Left Section is a grid with 5 rows and 1 columns
-    @include grid($columns: "1fr" , $rows:"3fr 3fr 1fr 3fr 1fr" , $area: "player_Staging_Area" "enemy_Staging_Area" "fight" "defender_Area" "comment_Area")
+    @include grid($columns: "1fr" , $rows:"2fr 2fr 0.5fr 2fr 0.5fr" , $area: "player_Area" "enemy_Area" "fight" "defender_Area_Main" "comment_Area")
     //PLayer Staging Area
-    .player_Staging_Area
-      grid-area: player_Staging_Area
+    .player_Area
+      grid-area: player_Area
       border: $border
       display: grid
+      min-height: 200px
+      .center
+        display: grid
+        @include grid($columns: 1fr, $rows:  1fr 5fr, $area: " player_Title" "player_Staging_Area")
+        @include grid_Vertical_Horizontal_Center
+        height: 100%
+        width: 100%
+        border: $border
+      .player_Title
+        color: white
+        grid-area: player_Title
+        @include grid_Vertical_Horizontal_Center
+      .player_Staging_Area
+        width: 100%
+        height: 100%
+        grid-area: player_Staging_Area
+        @include grid_Vertical_Horizontal_Center
 
     //Enermy Staging Area
-    .enemy_Staging_Area
-      grid-area: enemy_Staging_Area
+    .enemy_Area
+      grid-area: enemy_Area
       border: $border
+      display: grid
+      min-height: 200px
+      .center1
+        display: grid
+        @include grid($columns: 1fr, $rows:  1fr 5fr, $area: " enemy_Title" "enemy_Staging_Area")
+        @include grid_Vertical_Horizontal_Center
+        height: 100%
+        width: 100%
+      .enemy_Title
+        color: white
+        grid-area: enemy_Title
+        @include grid_Vertical_Horizontal_Center
+      .enemy_Staging_Area
+        width: 100%
+        height: 100%
+        grid-area: enemy_Staging_Area
+        @include grid_Vertical_Horizontal_Center
+
     //Fight area that has title text and a fight button
     .fight
       grid-area: fight
@@ -112,6 +150,7 @@ body
       border: $border
       // Fight Titile
       .fight_Title
+        color: white
         grid-area: fight_Title
         @include grid_Vertical_Horizontal_Center
       //Fight button
@@ -122,9 +161,27 @@ body
         height: auto
 
     //Defender Area
-    .defender_Area
-      grid-area: defender_Area
+    .defender_Area_Main
+      grid-area:  defender_Area_Main
+      color: white
       border: $border
+      display: grid
+      min-height: 200px
+      .center2
+        height: 100%
+        width: 100%
+        @include grid_Vertical_Horizontal_Center
+        display: grid
+        border: 1px white solid
+        @include grid($columns: 1fr, $rows:  1fr 5fr, $area: " defender_Title" "defender_Area")
+        .defender_Title
+          grid-area: defender_Title
+          @include grid_Vertical_Horizontal_Center
+        .defender_Area
+          grid-area: defender_Area
+          width: 100%
+          height: 100%
+          @include grid_Vertical_Horizontal_Center
 
     // Comment Area with chaning text and reset button
     .comment_Area
@@ -132,6 +189,7 @@ body
       grid-area: comment_Area
       @include grid($columns: "1fr" , $rows: "1fr 1fr 1fr" , $area: "player_Text" "enemy_Text" "button_Reset")
       border: $border
+      color: white
       // Player comments
       .player_Text
         grid-area: player_Text
@@ -154,3 +212,17 @@ body
   .right_Section
     grid-area: right_Section
     border: $border
+
+
+
+
+@media only screen and (max-width: 740px)
+
+  body
+    display: grid
+    @include grid ($columns: 0.1px 1fr 0.1px, $rows: 1fr 0.5fr, $area: ". right_Section ." ". left_Section .")
+    grid-column-gap: 0.5%
+    @include view_Height_Width
+    width: 100vw
+    height: 100vh
+    background-repeat: repeat
