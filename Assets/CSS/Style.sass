@@ -77,16 +77,14 @@ $border: 1px solid white
 //body declared as a grid. Has 2 main columns,2 outer side columns for spacing and one row
 body
   display: grid
-  background: url(../Img/star_Background.gif)
-  background-repeat: no-repeat
   padding: 0.5%
-  background-size: cover
   @include view_Height_Width
   @include grid ($columns: 0.1px 1fr 1fr 0.1px, $rows: 1fr, $area: ". left_Section right_Section.")
   grid-column-gap: 0.5%
   @include view_Height_Width
   width: 100vw
   height: 100vh
+  background-color: rgba(0, 0, 0, 0.8)
 
 
 
@@ -94,6 +92,9 @@ body
   .left_Section
     grid-area: left_Section
     display: grid
+    background: url(../Img/star_Background.gif)
+    background-repeat: no-repeat
+    background-size: cover
 
     //Left Section is a grid with 5 rows and 1 columns
     @include grid($columns: "1fr" , $rows:"2fr 2fr 0.5fr 2fr 0.5fr" , $area: "player_Area" "enemy_Area" "fight" "defender_Area_Main" "comment_Area")
@@ -213,6 +214,9 @@ body
   .right_Section
     grid-area: right_Section
     border: $border
+    background: url(../Img/star_Right_Background.jpg)
+    background-repeat: no-repeat
+    background-size: cover
 
 
 

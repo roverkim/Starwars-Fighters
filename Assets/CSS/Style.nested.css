@@ -35,10 +35,7 @@
 
 body {
   display: grid;
-  background: url(../Img/star_Background.gif);
-  background-repeat: no-repeat;
   padding: 0.5%;
-  background-size: cover;
   height: 100vh;
   width: 100vw;
   grid-template-columns: 0.1px 1fr 1fr 0.1px;
@@ -48,10 +45,14 @@ body {
   height: 100vh;
   width: 100vw;
   width: 100vw;
-  height: 100vh; }
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); }
   body .left_Section {
     grid-area: left_Section;
     display: grid;
+    background: url(../Img/star_Background.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
     grid-template-columns: "1fr";
     grid-template-rows: "2fr 2fr 0.5fr 2fr 0.5fr";
     grid-template-areas: "player_Area" "enemy_Area" "fight" "defender_Area_Main" "comment_Area"; }
@@ -177,7 +178,10 @@ body {
         color: black; }
   body .right_Section {
     grid-area: right_Section;
-    border: 1px solid white; }
+    border: 1px solid white;
+    background: url(../Img/star_Right_Background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; }
 
 @media only screen and (max-width: 740px) {
   body {
